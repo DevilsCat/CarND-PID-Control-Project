@@ -38,7 +38,15 @@ int main()
   uWS::Hub h;
 
   PID pid;
-  // TODO: Initialize the pid variable.
+  // Initialize the pid variable.
+  // The parameter is chosen by manually tuning.
+  // At the begning, I set I parameter to zero implement just PD controller.
+  //   1. Set P=1.0 and D=1.0: I found the car oscillates a lot, so I reduce the P value,
+  //   2. Set P=0.15 and D=1.0: The car drives oscillate less on the straight lane.
+  // On the curve however, the car is ofen off of track, thus I
+  //   1. Added a small I value and increase the P value to make the car be able to pull
+  //      back from off the track,
+  //   2. Increase D value to make the car more sensitive to the curve.
   pid.Init(0.15, 0.006, 2.0);
 
   h.onMessage([&pid](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode) {
