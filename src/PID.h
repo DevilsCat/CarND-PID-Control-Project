@@ -2,6 +2,9 @@
 #define PID_H
 
 class PID {
+  double int_errors_;
+  double prev_cte_;
+
 public:
   /*
   * Errors
