@@ -39,6 +39,12 @@ int main()
 
   PID pid;
   // Initialize the pid variable.
+  // Effect of P, I and D:
+  //   1. P, propotional to the cross-track error, providing the main steering control,
+  //   2. I, integral of cross-track error over time, helps the car to always keep itself
+  //      at zero offset,
+  //   3. D, the differential of the cross-track error, helps the car not oscillate and 
+  //      more senstive to the turning,
   // The parameter is chosen by manually tuning.
   // At the begning, I set I parameter to zero implement just PD controller.
   //   1. Set P=1.0 and D=1.0: I found the car oscillates a lot, so I reduce the P value,
